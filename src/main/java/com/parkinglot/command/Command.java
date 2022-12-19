@@ -7,7 +7,5 @@ public abstract class Command {
     public static void setParkingManager(ParkingManager parkingManager) {
         Command.parkingManager = parkingManager;
     }
-
-
     public abstract void execute(String[] args);
 }

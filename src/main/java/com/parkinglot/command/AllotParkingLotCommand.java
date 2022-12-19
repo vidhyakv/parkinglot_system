@@ -5,16 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.parkinglot.model.Slot;
-import com.parkinglot.service.ParkingLot;
-
 public class AllotParkingLotCommand extends Command {
     @Override
     public void execute(String[] args) {
-        String feeModel = args[0];
-
         HashMap<String, List<Slot>> slots = new HashMap<>();
 
-        for (int i = 1; i <= args.length - 1; i++) {
+        for (int i = 0; i <= args.length - 1; i++) {
             String[] values = args[i].split(":");
             if (values[1].equals("NA")) {
                 slots.put(values[0], null);
@@ -28,6 +24,8 @@ public class AllotParkingLotCommand extends Command {
             }
 
         }
+        System.out.println("get parking lot");
+        System.out.println(parkingManager);
         parkingManager.getParkingLot().setSlots(slots);
     }
 }

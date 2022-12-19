@@ -12,7 +12,7 @@ public class ParkingManager {
     }
 
     public ParkingLot getParkingLot() {
-        return parkingLot;
+        return this.parkingLot;
     }
 
     public ParkingRegister getParkingRegister() {

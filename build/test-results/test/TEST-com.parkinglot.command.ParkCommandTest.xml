@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.parkinglot.command.ParkCommandTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-12-19T11:41:59" hostname="ip-192-168-29-78.ap-south-1.compute.internal" time="0.107">
+  <properties/>
+  <testcase name="shouldParkMotorcycleandSetTicketNumber" classname="com.parkinglot.command.ParkCommandTest" time="0.107"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

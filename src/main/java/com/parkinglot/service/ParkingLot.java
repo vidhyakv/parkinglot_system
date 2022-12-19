@@ -20,10 +20,6 @@ public class ParkingLot {
     public ParkingLot() {
     }
 
-    public HashMap<String, List<Slot>> getVehicleSlots() {
-        return this.slots;
-    }
-
     public List<Slot> getSlots(String vehicleName) {
         return this.slots.get(vehicleName);
     }
