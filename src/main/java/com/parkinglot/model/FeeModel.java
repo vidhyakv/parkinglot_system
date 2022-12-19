@@ -4,13 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class FeeModel {
+public abstract class FeeModel {
+    protected static HashMap<String, Integer> feeModels = new HashMap<>();
 
-
-    private static FeeModel feeModel = new FeeModel();
-
-    public static FeeModel getInstance() {
-        return feeModel;
-    }
+    public abstract void putfeeModel(String vehicleName, int feeValue);
 
 }

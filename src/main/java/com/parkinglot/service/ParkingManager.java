@@ -7,6 +7,10 @@ public class ParkingManager {
 
     private ParkingRegister parkingRegister;
 
+    public ParkingManager(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
+    }
+
     public ParkingLot getParkingLot() {
         return parkingLot;
     }

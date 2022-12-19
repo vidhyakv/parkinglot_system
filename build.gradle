@@ -1,0 +1,29 @@
+group 'Parking Lot'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+	testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.parkinglot.ParkingSystem"
+    }
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
