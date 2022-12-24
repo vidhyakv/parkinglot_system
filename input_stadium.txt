@@ -1,0 +1,11 @@
+create_parking_lot
+setup_fee_model Stadium
+setup_fee_value motorcycle 30 0 4
+setup_fee_value motorcycle 60 4 12
+setup_fee_value motorcycle 100 12 0
+setup_fee_value car 60 0 4
+setup_fee_value car 120 4 12
+setup_fee_value car 200 12 0
+allot_parking_lot motorcycle/scooter:1000 car/SUV/Bus/Truck:1500
+park motorcycle
+unpark motorcycle ticket number 001

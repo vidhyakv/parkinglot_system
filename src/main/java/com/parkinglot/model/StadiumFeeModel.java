@@ -2,10 +2,7 @@ package com.parkinglot.model;
 
 import com.parkinglot.util.MathUtility;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class AirPortFeeModel extends FeeModel{
+public class StadiumFeeModel extends FeeModel{
 
     public void putfeeModel(String vehicleName, FeeDetail feeDetail) {
         feeModels.put(new Vehicle(vehicleName), feeDetail);
@@ -15,7 +12,7 @@ public class AirPortFeeModel extends FeeModel{
         for (Vehicle vehicle : getVehicleModels(vehicleName)) {
             FeeDetail feeDetail = feeModels.get(vehicle);
             if(hours > feeDetail.getFeeLowerLimit() && feeDetail.getFeeUpperLimit()==0){
-                return feeDetail.getFeeValue() * MathUtility.roundOff((float)hours/24);
+                return feeDetail.getFeeValue() * hours;
             }else if(hours < feeDetail.getFeeUpperLimit() && hours > feeDetail.getFeeLowerLimit()) {
                 return feeDetail.getFeeValue();
             }else{
