@@ -19,7 +19,7 @@ public class AirPortFeeModel extends FeeModel{
             }else if(hours < feeDetail.getFeeUpperLimit() && hours > feeDetail.getFeeLowerLimit()) {
                 return feeDetail.getFeeValue();
             }else{
-                return feeDetail.getFeeValue();
+                return 0;
             }
         }
         return 0;

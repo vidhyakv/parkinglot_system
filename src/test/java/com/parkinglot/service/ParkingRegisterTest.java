@@ -35,7 +35,7 @@ public class ParkingRegisterTest {
     }
 
     @Test
-    public void shouldAddRecordinParkingStatus() throws Exception {
+    public void shouldAddRecordToParkingStatus() throws Exception {
         Record record = parkingRegister.record(slot, vehicleName);
         assertEquals(record.getSlot(),slot);
         assertNotNull(parkingRegister.getParkingStatus().get(record.getTicketNumber()));

@@ -40,9 +40,7 @@ public class ParkingRegister {
 
 
     public Record erase(Record record) {
-        //record.setEndTime(java.time.LocalDateTime.now().plusDays(8));
-        record.setEndTime(java.time.LocalDateTime.now());
-        record.getSlot().setOccupied(false);
+        record.terminateRecord();
         return parkingStatus.remove(record.getTicketNumber());
     }
 

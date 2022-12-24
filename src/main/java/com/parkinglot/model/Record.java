@@ -72,6 +72,10 @@ public class Record {
         this.vehicleName = vehicleName;
     }
 
+    public void terminateRecord(){
+        setEndTime(java.time.LocalDateTime.now());
+        getSlot().setOccupied(false);
+    }
     @Override
     public String toString() {
         return "Record{" +
