@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 public class CommandTest {
 
-	ParkingManager parkingManager = Mockito.mock(ParkingManager.class);
+	protected ParkingManager parkingManager = Mockito.mock(ParkingManager.class);
 
 	protected final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 

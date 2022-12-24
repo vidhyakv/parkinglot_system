@@ -19,10 +19,10 @@ public class ParkingSystem {
         commandProcessor = new CommandProcessor();
         commandProcessor.setCommand("create_parking_lot", new CreateParkingLotCommand());
         commandProcessor.setCommand("setup_fee_model", new ConfigureFeeModel());
-        commandProcessor.setCommand("setup_fee_value", new ConfigureFeeModel());
+        commandProcessor.setCommand("setup_fee_value", new ConfigureFeeValue());
         commandProcessor.setCommand("allot_parking_lot", new AllotParkingLotCommand());
         commandProcessor.setCommand("park", new ParkCommand());
-
+        commandProcessor.setCommand("unpark", new UnparkCommand());
 
         if (args.length > 0) {
             File inputFile = new File(args[0]);
@@ -51,9 +51,9 @@ public class ParkingSystem {
     public static void process(String inputLine) {
         try {
             commandProcessor.process(inputLine);
-            System.out.println("Process is completed");
+            System.out.println(String.format("Process is completed %s", inputLine));
         } catch (Exception e) {
-            System.out.println("Something went wrong. Please check your input. " + e.toString());
+            System.out.println("Something went wrong. Please check your input. " + e.getMessage());
         }
 
     }

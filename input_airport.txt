@@ -1,0 +1,16 @@
+create_parking_lot
+setup_fee_model Airport
+setup_fee_value motorcycle 0 0 1
+setup_fee_value motorcycle 40 1 8
+setup_fee_value motorcycle 60 8 24
+setup_fee_value motorcycle 80 24 0
+setup_fee_value car 60 0 12
+setup_fee_value car 80 12 24
+setup_fee_value car 100 24 0
+allot_parking_lot motorcycle/scooter:200 car/SUV/Bus/Truck:500 bus/truck:100
+park motorcycle
+unpark motorcycle ticket number 001
+park car
+unpark car ticket number 002
+park motorcycle
+unpark motorcycle ticket number 003

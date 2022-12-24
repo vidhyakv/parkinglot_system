@@ -24,8 +24,6 @@ public class AllotParkingLotCommand extends Command {
             }
 
         }
-        System.out.println("get parking lot");
-        System.out.println(parkingManager);
         parkingManager.getParkingLot().setSlots(slots);
     }
 }

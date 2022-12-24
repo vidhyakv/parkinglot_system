@@ -1,0 +1,15 @@
+create_parking_lot
+setup_fee_model Mall
+setup_fee_value motorcycle 10
+setup_fee_value scooter 30
+setup_fee_value car 20
+setup_fee_value suv 20
+setup_fee_value bus 50
+setup_fee_value truck 50
+allot_parking_lot motorcycle/scooter:2 car/SUV/Bus/Truck:NA
+park motorcycle
+unpark motorcycle ticket number 001
+park scooter
+park motorcycle
+unpark scooter ticket number 002
+unpark motorcycle ticket number 003

@@ -1,20 +1,23 @@
 package com.parkinglot.util;
 
+import com.parkinglot.model.AirPortFeeModel;
 import com.parkinglot.model.MallFeeModel;
 import com.parkinglot.model.FeeModel;
 
 public class FeeModelFactory {
 
-    public static FeeModel getFeeModel(String feeModel) {
-        switch (feeModel) {
+    public static FeeModel getFeeModel(String inputFeeModel) {
+        FeeModel feeModel = null;
+        switch (inputFeeModel) {
             case "Mall":
-                new MallFeeModel();
-                break;
+                feeModel = new MallFeeModel();
             case "Stadium":
-                break;
+                feeModel = new MallFeeModel();
             case "Airport":
+                feeModel = new AirPortFeeModel();
+            default: break;
         }
-        return new MallFeeModel();
+        return feeModel;
     }
 
 }

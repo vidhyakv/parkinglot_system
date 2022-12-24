@@ -10,6 +10,7 @@ public class ConfigureFeeModel extends Command {
 
         String inputFeeModel = args[0];
         FeeModel feeModel = FeeModelFactory.getFeeModel(inputFeeModel);
+        System.out.println(feeModel);
         parkingManager.getParkingLot().setFeeModel(feeModel);
     }
 }

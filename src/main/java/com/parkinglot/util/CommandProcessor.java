@@ -16,7 +16,7 @@ public class CommandProcessor {
         this.commandMap.put(operation, command);
     }
 
-    public void process(String inputLine) {
+    public void process(String inputLine) throws Exception {
         String[] inputWords = inputLine.split(" ");
         String operation = inputWords[0];
         String[] args = Arrays.copyOfRange(inputWords, 1, inputWords.length);
