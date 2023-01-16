@@ -1,10 +1,13 @@
 package com.parkinglot.service;
 
 
-import com.parkinglot.model.Record;
-import com.parkinglot.model.Slot;
+import com.parkinglot.model.*;
+import com.parkinglot.util.TimeUtility;
 
 import java.text.MessageFormat;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ParkingManager {
@@ -22,23 +25,18 @@ public class ParkingManager {
         return this.parkingLot;
     }
 
-    public void setParkingLot(ParkingLot parkingLot) {
-        this.parkingRegister = new ParkingRegister();
-        this.parkingLot = parkingLot;
-    }
-
-    public Record park(String vehicleName) {
+    public Record park(String vehicleName, LocalDateTime entryTime) {
         List<Slot> totalSlots = parkingLot.getAvailableSlots(vehicleName);
         Slot slot = totalSlots.stream().filter(a->!a.isOccupied()).findFirst()
                 .orElseThrow(() -> new RuntimeException("All slots are occupied"));
-        Record record = parkingRegister.record(slot, vehicleName);
+        Record record = parkingRegister.record(slot, vehicleName, entryTime);
         return record;
     }
 
-    public Record unpark(String vehicleName, int ticketNumber) throws Exception {
+    public Record unpark(String vehicleName, int ticketNumber, LocalDateTime endTime) throws Exception {
         Record record = parkingRegister.getSlotbyTicketNumber(vehicleName, ticketNumber);
-        parkingRegister.erase(record);
-        record.setFeeCost(parkingLot.getFeeModel().calculateFee(record.getParkingTime(), vehicleName));
+        parkingRegister.erase(record, endTime);
+        record.setFeeCost(parkingLot.getFeeModel().calculateFee(record.getParkingTime(), vehicleName, parkingLot.getFeeModel().getLocalFeeModels()));
         return record;
     }
 }

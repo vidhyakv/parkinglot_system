@@ -5,6 +5,7 @@ import com.parkinglot.model.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ public class ParkingManagerTest {
 
     private List<Slot> allotedSlots;
     private Record inputRec;
+    private java.time.LocalDateTime entryTime;
 
     @Before
     public void setUp() {
@@ -40,12 +42,13 @@ public class ParkingManagerTest {
         inputRec.setSlot(slot);
         inputRec.setVehicleName("motorcycle");
         inputRec.setTicketNumber(19);
-        inputRec.setEntryDateTime(java.time.LocalDateTime.now());
+        entryTime = java.time.LocalDateTime.now();
+        inputRec.setEntryDateTime(entryTime);
     }
 
     @Test
     public void shouldMakeentryRecordwhileParking() throws Exception {
-        Record record = parkingManager.park(vehicleName);
+        Record record = parkingManager.park(vehicleName, java.time.LocalDateTime.now().plusDays(1));
         assertEquals(record.getTicketNumber(),1);
         assertEquals(parkingRegister.getParkingStatus().get(record.getTicketNumber()),record);
     }
@@ -53,7 +56,7 @@ public class ParkingManagerTest {
     @Test(expected = RuntimeException.class)
     public void shouldThrowErrorwhenallSlotsareOccupied() throws Exception {
         allotedSlots.stream().forEach(element-> element.setOccupied(true));
-        parkingManager.park(vehicleName);
+        parkingManager.park(vehicleName, java.time.LocalDateTime.now());
     }
 
     @Test
@@ -61,13 +64,14 @@ public class ParkingManagerTest {
         AirPortFeeModel feeModel = new AirPortFeeModel();
         FeeDetail feeDetail = new FeeDetail();
         feeDetail.setFeeValue(900);
-        feeDetail.setFeeLowerLimit(0);
-        feeDetail.setFeeUpperLimit(12);
+        feeDetail.setFeeLowerLimit(24);
+        feeDetail.setFeeUpperLimit(0);
+        feeDetail.setFeeType("per-day");
         feeModel.putfeeModel("motorcycle", feeDetail);
         parkingLot.setFeeModel(feeModel);
         parkingRegister.getParkingStatus().put(19, inputRec);
-        parkingManager.unpark(vehicleName, 19);
-        assertEquals(inputRec.getFeeCost(), 900);
+        parkingManager.unpark(vehicleName, 19, entryTime.now().plusDays(2));
+        assertEquals(inputRec.getFeeCost(), 1800);
     }
 
 }

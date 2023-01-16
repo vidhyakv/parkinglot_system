@@ -29,14 +29,13 @@ public class UnParkCommandTest extends CommandTest {
         Record record = new Record();
         record.setVehicleName(vehicleName);
         LocalDateTime entryTime = java.time.LocalDateTime.now();
-        LocalDateTime endTime = java.time.LocalDateTime.now();
+        LocalDateTime endTime = java.time.LocalDateTime.now().plusDays(1);
         record.setEntryDateTime(entryTime);
-        record.setEndTime(endTime);
         record.setFeeCost(20);
         record.setSlot(slot);
         unParkCommand.setParkingManager(parkingManager);
-        when (parkingManager.unpark(vehicleName, ticketNumber)).thenReturn(record);
-        unParkCommand.execute( new String []{ vehicleName, "ticket", "number", "1" } );
+        when (parkingManager.unpark(vehicleName, ticketNumber, endTime)).thenReturn(record);
+        unParkCommand.execute( new String []{ vehicleName, "ticket", "number", "1", "2023-01-02", "03:30" } );
         assertEquals(MessageFormat.format("Parking Receipt: \n Receipt Number: R-{0} \n Entry Date-time: {1} \n Exit Date-time: {2} \n Fees: {3}\n",ticketNumber,entryTime,endTime,20), outContent.toString());
     }
 }

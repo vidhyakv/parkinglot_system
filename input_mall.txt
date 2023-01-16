@@ -7,9 +7,9 @@ setup_fee_value suv 20
 setup_fee_value bus 50
 setup_fee_value truck 50
 allot_parking_lot motorcycle/scooter:2 car/SUV/Bus/Truck:NA
-park motorcycle
-unpark motorcycle ticket number 001
-park scooter
-park motorcycle
-unpark scooter ticket number 002
-unpark motorcycle ticket number 003
+park motorcycle 2023-01-02 10:30
+unpark motorcycle ticket number 001 2023-01-02 17:30
+park scooter 2023-01-02 11:30
+park motorcycle 2023-01-02 11:45
+unpark scooter ticket number 002 2023-01-02 14:30
+unpark motorcycle ticket number 003 2023-01-02 11:50

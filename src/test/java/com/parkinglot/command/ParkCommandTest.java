@@ -36,9 +36,8 @@ public class ParkCommandTest extends CommandTest {
         Record record = new Record();
         record.setTicketNumber(1);
         record.setSlot(new Slot(1));
-        record.setEntryDateTime(java.time.LocalDateTime.now());
         parkCommand.setParkingManager(parkingManager);
-        when (parkingManager.park(vehicleName)).thenReturn(record);
+        when (parkingManager.park(vehicleName, java.time.LocalDateTime.now())).thenReturn(record);
         parkCommand.execute(new String []{ vehicleName });
         assertEquals(MessageFormat.format("Parking Ticket \n Ticket Number: {0} Slot Number: {1} Entry Date-time: {2}\n", record.getTicketNumber(),record.getSlot().getSlotId(), record.getEntryDateTime()), outContent.toString());
     }

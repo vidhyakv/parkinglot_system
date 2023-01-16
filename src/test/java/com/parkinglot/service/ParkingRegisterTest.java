@@ -29,14 +29,12 @@ public class ParkingRegisterTest {
         inputRec = new Record();
         inputRec.setSlot(slot);
         inputRec.setTicketNumber(19);
-        inputRec.setEntryDateTime(java.time.LocalDateTime.now());
         inputRec.setFeeCost(78);
-        inputRec.setEndTime(java.time.LocalDateTime.now());
     }
 
     @Test
     public void shouldAddRecordToParkingStatus() throws Exception {
-        Record record = parkingRegister.record(slot, vehicleName);
+        Record record = parkingRegister.record(slot, vehicleName, java.time.LocalDateTime.now());
         assertEquals(record.getSlot(),slot);
         assertNotNull(parkingRegister.getParkingStatus().get(record.getTicketNumber()));
     }
@@ -46,7 +44,7 @@ public class ParkingRegisterTest {
         inputRec.getSlot().setOccupied(true);
         assertEquals(inputRec.getSlot().isOccupied(),true);
         parkingRegister.getParkingStatus().put(inputRec.getTicketNumber(),inputRec);
-        parkingRegister.erase(inputRec);
+        parkingRegister.erase(inputRec, java.time.LocalDateTime.now().plusDays(9));
         assertEquals (inputRec.getSlot().isOccupied(),false);
         assertNull(parkingRegister.getParkingStatus().get(inputRec.getTicketNumber()));
     }

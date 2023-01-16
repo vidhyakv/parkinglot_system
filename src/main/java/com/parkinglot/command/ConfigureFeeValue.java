@@ -13,9 +13,12 @@ public class ConfigureFeeValue extends Command {
         String feeValue = args[1];
         FeeDetail feeDetail = new FeeDetail();
         feeDetail.setFeeValue(Integer.parseInt(feeValue));
-        if (args.length>2){
+        if (args.length>3){
             feeDetail.setFeeLowerLimit(Integer.parseInt(args[2]));
             feeDetail.setFeeUpperLimit(Integer.parseInt(args[3]));
+        }
+        if(args.length>4){
+            feeDetail.setFeeType(args[4]);
         }
         parkingManager.getParkingLot().getFeeModel().putfeeModel(vehicleName, feeDetail);
     }

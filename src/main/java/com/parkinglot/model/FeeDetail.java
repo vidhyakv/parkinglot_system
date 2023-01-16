@@ -9,6 +9,8 @@ public class FeeDetail {
 
     private int feeUpperLimit;
 
+    private String feeType;
+
     public int getFeeValue() {
         return feeValue;
     }
@@ -33,12 +35,21 @@ public class FeeDetail {
         this.feeUpperLimit = feeUpperLimit;
     }
 
+    public String getFeeType() {
+        return feeType;
+    }
+
+    public void setFeeType(String feeType) {
+        this.feeType = feeType;
+    }
+
     @Override
     public String toString() {
         return "FeeDetail{" +
                 "feeValue=" + feeValue +
                 ", feeLowerLimit=" + feeLowerLimit +
-                ", feeUpperLimit='" + feeUpperLimit + '\'' +
+                ", feeUpperLimit=" + feeUpperLimit +
+                ", feeType='" + feeType + '\'' +
                 '}';
     }
 }

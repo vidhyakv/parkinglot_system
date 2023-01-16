@@ -7,9 +7,8 @@ public class Test {
     public static void main(String[] args){
         int hours = 31;
 
-        System.out.println(        LocalDateTime.now().plusDays(8));
 
-        //System.out.println( (int) Math.ceil((float) hours/24));
+        System.out.println();
     }
 
     public static int test(){

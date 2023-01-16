@@ -11,9 +11,9 @@ public class MallFeeModel extends FeeModel{
         feeModels.put(new Vehicle(vehicleName), feeDetail);
     }
 
-    public int calculateFee(int hours, String vehicleName) throws Exception {
-        for (Vehicle vehicle : getVehicleModels(vehicleName)) {
-            FeeDetail feeDetail = feeModels.get(vehicle);
+    public int calculateFee(int hours, String vehicleName, HashMap<Vehicle, FeeDetail> localFeeModels) throws Exception {
+        for (Vehicle vehicle : getVehicleModels(vehicleName, localFeeModels)) {
+            FeeDetail feeDetail = localFeeModels.get(vehicle);
             if (feeDetail != null) {
                 return hours * feeDetail.getFeeValue();
             } else {

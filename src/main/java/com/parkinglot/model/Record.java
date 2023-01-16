@@ -72,8 +72,8 @@ public class Record {
         this.vehicleName = vehicleName;
     }
 
-    public void terminateRecord(){
-        setEndTime(java.time.LocalDateTime.now());
+    public void terminateRecord(LocalDateTime endTime){
+        setEndTime(endTime);
         getSlot().setOccupied(false);
     }
     @Override

@@ -26,12 +26,12 @@ public class ParkingRegister {
         return parkingStatus;
     }
 
-    public Record record(Slot slot, String vehicleName) {
+    public Record record(Slot slot, String vehicleName, LocalDateTime entryTime) {
         int ticketNo = getTicketNumber();
         Record record = new Record();
         record.setSlot(slot);
         record.setTicketNumber(ticketNo);
-        record.setEntryDateTime(java.time.LocalDateTime.now());
+        record.setEntryDateTime(entryTime);
         record.setVehicleName(vehicleName);
         slot.setOccupied(true);
         parkingStatus.put(ticketNo, record);
@@ -39,8 +39,8 @@ public class ParkingRegister {
     }
 
 
-    public Record erase(Record record) {
-        record.terminateRecord();
+    public Record erase(Record record, LocalDateTime endTime) {
+        record.terminateRecord(endTime);
         return parkingStatus.remove(record.getTicketNumber());
     }
 
